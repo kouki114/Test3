@@ -30,14 +30,11 @@ public class NewFrame2 extends JFrame {
 	JButton b4 = new JButton("4");
 	JButton b5 = new JButton();
 	JButton b6 = new JButton("");
-	JTextPane p = new JTextPane();
 	JButton b7 = new JButton("削除");
 	JButton b8 = new JButton("決定");
 	JTextPane problemText = new JTextPane();
 	JTextPane ansText = new JTextPane();
 	JTextField result = new JTextField();
-	boolean send = false;
-	boolean next = false;
 	public NewFrame2() {
 		super("test");
 		this.setLayout(new GridLayout(4,1));
@@ -96,14 +93,6 @@ public class NewFrame2 extends JFrame {
 		});
 		p2.add(b5);
 		p2.add(b6);
-		b6.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO 自動生成されたメソッド・スタブ
-			}
-			
-		});
 		p2.add(b7);
 		b7.addActionListener(new ActionListener() {
 
@@ -187,6 +176,7 @@ public class NewFrame2 extends JFrame {
 					textNum = null;
 					problemNumber++;
 				}
+				
 			}
 			
 		});
@@ -233,47 +223,6 @@ public class NewFrame2 extends JFrame {
 			count++;
 		}
 		return textNumber;
-	}
-	public void setProblemText(String text) {
-		this.problemText.setText(text);
-	}
-	public void setAnsText(String test) {
-		this.ansText.setText(test);
-	}
-	public String getAns() {
-		String answer = null;
-		while(true){
-			answer = result.getText();
-			if(send == true) {
-				break;
-			}
-		}
-		send = false;
-		return answer;
-	}
-	public boolean getEvent() {
-		while(true) {
-			System.out.println(send);
-			boolean a = send;
-			if(a == true) {
-				break;
-			}
-		}
-		send = false;
-		return true;
-	}
-	private int ansChenger(int i,Set<Integer> lhs) {
-		//順番をランダム化させた問題のProblemクラス内にあった時の順盤の取得
-		//このとき1番（5行目）のものが正解である
-		
-		int count = 1;
-		for(int j : lhs) {
-			if(i == count) {
-				return j;
-			}
-			count++;
-		}
-		return -1;
 	}
 	private LinkedHashSet<Integer> rundom(String[] problem) {
 //		問題の順盤をランダム化させるための順盤取得

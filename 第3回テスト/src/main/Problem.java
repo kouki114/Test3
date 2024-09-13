@@ -95,21 +95,4 @@ public class Problem extends Text{
 		}
 		return -1;
 	}
-	private LinkedHashSet<Integer> rundom(String[] problem) {
-//		問題の順盤をランダム化させるための順盤取得
-//		ここで選択問題の選択肢の数だけ0から乱数をSetに格納
-//		
-		LinkedHashSet<Integer> num = new LinkedHashSet<Integer>();
-		while(true) {
-			for(int i = 0 ; i < (problem.length - 4) ; i++ ) {
-				int number = new java.util.Random().nextInt(problem.length - 4);
-				num.add(number);
-			}
-			if(num.size() == (problem.length - 4)) {
-				break;
-			}
-		}
-		return num;
-	}
-	
 }
