@@ -162,6 +162,7 @@ public class NewFrame2 extends JFrame {
 						ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[2]);
 					}
 					case "選択" ->{
+						ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[2]);
 						ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[4]);
 					}
 					case "完答" ->{
@@ -203,7 +204,7 @@ public class NewFrame2 extends JFrame {
 	}
 	public Set<Integer> TextPerfect(String[] problem) {
 		problemText.setText("完答問題\n");
-		problemText.setText(problemText.getText() + problem[4]);
+		problemText.setText(problemText.getText() + problem[3]);
 		Set<Integer> textNumber = rundom(problem);
 		int count = 1;
 		for(int j : textNumber) {//rundomメソッドで作った数字に対応する行の選択肢を出力する
