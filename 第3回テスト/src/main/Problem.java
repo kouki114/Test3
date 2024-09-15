@@ -28,6 +28,9 @@ public class Problem extends Text{
 			}
 	}
 	public boolean choice(String[] problem,String ansStr,Set<Integer> textNumber) {
+		if(ansStr == null || ansStr.equals("")) {
+			ansStr = "0";
+		}
 		int ans = Integer.parseInt(ansStr);
 		int ac = ansChenger(ans,textNumber);//解答として入力した数字をrundomメソッドで元の選択肢の順番に変換している
 //		System.out.println(ac);
@@ -38,6 +41,9 @@ public class Problem extends Text{
 		}
 	}
 	public  boolean perfect(String[] problem,String ans , Set<Integer> textNumber) {
+		if(ans == null || ans.equals("")) {
+			ans = "0";
+		}
 		int[] cutAns = new int[ans.length()];
 		for(int i = 0; i < ans.length() ; i++) {
 			cutAns[i] = ansChenger(Integer.parseInt(ans.substring(i,i + 1)),textNumber);
@@ -58,6 +64,9 @@ public class Problem extends Text{
 		}
 	}
 	public boolean sort(String[] problem,String ans ,Set<Integer> textNumber) {
+		if(ans == null || ans.equals("")) {
+			ans = "0";
+		}
 		int[] cutAns = new int[ans.length()];
 		for(int i = 0; i < ans.length() ; i++) {
 			try {

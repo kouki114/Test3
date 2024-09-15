@@ -133,69 +133,83 @@ public class NewFrame2 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自動生成されたメソッド・スタブ
-				if(TextOrAns == true) {
+				if(problem.problems.size() > problemNumber) {
+					if(TextOrAns == true) {
+						result.setText("");
+						ansText.setText("");
+						switch(problem.problems.get(problemNumber)[0]) {
+							case "記述" ->{
+								TextDescription(problem.problems.get(problemNumber));
+							}
+							case "選択" ->{
+								textNum = TextChoice(problem.problems.get(problemNumber));
+							}
+							case "完答" ->{
+								textNum = TextPerfect(problem.problems.get(problemNumber));
+							}
+							case "並べ替え"->{
+								textNum = TextSort(problem.problems.get(problemNumber));
+							}
+						}
+						TextOrAns = false;
+					}else if (TextOrAns == false) {
+						boolean ans = false;
+						switch(problem.problems.get(problemNumber)[0]) {
+							case "記述" ->{
+								ans = problem.description(problem.problems.get(problemNumber),result.getText());
+							}
+							case "選択" ->{
+								ans = problem.choice(problem.problems.get(problemNumber),result.getText(),textNum);
+							}
+							case "完答" ->{
+								ans = problem.perfect(problem.problems.get(problemNumber),result.getText(),textNum);
+							}
+							case "並べ替え"->{
+								ans = problem.sort(problem.problems.get(problemNumber),result.getText(),textNum);
+							}
+						}
+						if(ans == true) {
+							ansText.setText("正解　");
+							corrent++;
+						}else {
+							ansText.setText("不正解　");
+							uncorrent++;
+							miss.add(problem.problems.get(problemNumber));
+						}
+						switch(problem.problems.get(problemNumber)[0]) {
+						case "記述" ->{
+							ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[2]);
+						}
+						case "選択" ->{
+							ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[2]);
+							ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[4]);
+						}
+						case "完答" ->{
+							ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[2]);
+						}
+						case "並べ替え" ->{
+							ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[2]);
+						}
+						}
+						ansText.setText(ansText.getText() + "決定を押すと次の問題に移ります");
+						TextOrAns = true;
+						textNum = null;
+						problemNumber++;
+					}
+				}else {
 					result.setText("");
 					ansText.setText("");
-					switch(problem.problems.get(problemNumber)[0]) {
-						case "記述" ->{
-							TextDescription(problem.problems.get(problemNumber));
-						}
-						case "選択" ->{
-							textNum = TextChoice(problem.problems.get(problemNumber));
-						}
-						case "完答" ->{
-							textNum = TextPerfect(problem.problems.get(problemNumber));
-						}
-						case "並べ替え"->{
-							textNum = TextSort(problem.problems.get(problemNumber));
-						}
-					}
-					TextOrAns = false;
-				}else if (TextOrAns == false) {
-					boolean ans = false;
-					switch(problem.problems.get(problemNumber)[0]) {
-						case "記述" ->{
-							ans = problem.description(problem.problems.get(problemNumber),result.getText());
-						}
-						case "選択" ->{
-							ans = problem.choice(problem.problems.get(problemNumber),result.getText(),textNum);
-						}
-						case "完答" ->{
-							ans = problem.perfect(problem.problems.get(problemNumber),result.getText(),textNum);
-						}
-						case "並べ替え"->{
-							ans = problem.sort(problem.problems.get(problemNumber),result.getText(),textNum);
-						}
-					}
-					if(ans == true) {
-						ansText.setText("正解　");
-						corrent++;
-					}else {
-						ansText.setText("不正解　");
-						uncorrent++;
-						miss.add(problem.problems.get(problemNumber));
-					}
-					switch(problem.problems.get(problemNumber)[0]) {
-					case "記述" ->{
-						ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[2]);
-					}
-					case "選択" ->{
-						ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[2]);
-						ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[4]);
-					}
-					case "完答" ->{
-						ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[2]);
-					}
-					case "並べ替え" ->{
-						ansText.setText(ansText.getText() + problem.problems.get(problemNumber)[2]);
-					}
-					}
-					ansText.setText(ansText.getText() + "決定を押すと次の問題に移ります");
-					TextOrAns = true;
-					textNum = null;
-					problemNumber++;
+					problemText.setText("全て終わりました\n"
+							+ "正解した問題は" + corrent 
+							+"不正解の問題は"  + uncorrent
+							+"ここからは不正解の問題タイム"
+							);
+					problemNumber = 0;
+					corrent = 0;
+					uncorrent = 0;
+					problem.problems = miss;
+					miss = null;
 				}
-				
 			}
 			
 		});
