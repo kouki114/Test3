@@ -28,8 +28,8 @@ public class NewFrame2 extends JFrame {
 	JButton b2 = new JButton("2");
 	JButton b3 = new JButton("3");
 	JButton b4 = new JButton("4");
-	JButton b5 = new JButton();
-	JButton b6 = new JButton("");
+	JButton b5 = new JButton("5");
+	JButton b6 = new JButton("6");
 	JButton b7 = new JButton("削除");
 	JButton b8 = new JButton("決定");
 	JTextPane problemText = new JTextPane();
@@ -92,7 +92,25 @@ public class NewFrame2 extends JFrame {
 			
 		});
 		p2.add(b5);
+		b5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自動生成されたメソッド・スタブ
+				result.setText(result.getText() + 5);
+			}
+			
+		});;
 		p2.add(b6);
+		b6.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自動生成されたメソッド・スタブ
+				result.setText(result.getText() + 6);
+			}
+			
+		});
 		p2.add(b7);
 		b7.addActionListener(new ActionListener() {
 
