@@ -196,7 +196,7 @@ public class NewFrame2 extends JFrame {
 						textNum = null;
 						problemNumber++;
 					}
-				}else {
+				}else if(miss.size() > 0){
 					result.setText("");
 					ansText.setText("");
 					problemText.setText("全て終わりました\n"
@@ -209,6 +209,8 @@ public class NewFrame2 extends JFrame {
 					uncorrent = 0;
 					problem.problems = miss;
 					miss = null;
+				}else {
+					System.out.println("ほんとに終わり");
 				}
 			}
 			
