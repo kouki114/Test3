@@ -210,7 +210,7 @@ public class NewFrame2 extends JFrame {
 					problem.problems = miss;
 					miss = null;
 				}else {
-					System.out.println("ほんとに終わり");
+					problemText.setText("ほんとに終わり");
 				}
 			}
 			
@@ -253,7 +253,6 @@ public class NewFrame2 extends JFrame {
 		Set<Integer> textNumber = rundom(problem);
 		int count = 1;
 		for(int j : textNumber) {//rundomメソッドで作った数字に対応する行の選択肢を出力する
-			System.out.println(count + " : " + problem[j + 4]);
 			problemText.setText(problemText.getText() + count + " : " + problem[j + 4]);
 			count++;
 		}
