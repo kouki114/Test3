@@ -208,7 +208,7 @@ public class NewFrame2 extends JFrame {
 					corrent = 0;
 					uncorrent = 0;
 					problem.problems = miss;
-					miss = null;
+					miss = new ArrayList<>();
 				}else {
 					problemText.setText("ほんとに終わり");
 				}
